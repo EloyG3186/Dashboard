@@ -76,10 +76,6 @@ let cambiosIndicadores = () => {
             descripcion: "que el mes pasado"
         },
         {
-            porcentaje: "+3%",
-            descripcion: "que el mes pasado"
-        },
-        {
             porcentaje: "-2%",
             descripcion: "que ayer"
         },
@@ -89,7 +85,46 @@ let cambiosIndicadores = () => {
         },
     ];
 
-    let [users, clients, sales] = data;
+    let [SemPasada, MesPasado, UsuariosAyer, VentasAyer] = data;
+
+    let { porcentaje: PSemPasada, descripcion: DSempasada } = SemPasada;
+    let { porcentaje: PMesPasado, descripcion: DMesPasado } = MesPasado;
+    let { porcentaje: PUsuariosAyer, descripcion: DUsuariosAyer } = UsuariosAyer;
+    let { porcentaje: PVentasAyer, descripcion: DVentasAyer } = VentasAyer;
+
+    let MsgSemPasada = `<p class="mb-0"><span class="text-success text-sm font-weight-bolder">${PSemPasada} </span>${DSempasada}</p>`
+    let MsgMesPasado = `<p class="mb-0"><span class="text-success text-sm font-weight-bolder">${PMesPasado} </span>${DMesPasado}</p>`
+    let MsgUsuariosAyer = `<p class="mb-0"><span class="text-success text-sm font-weight-bolder">${PUsuariosAyer} </span>${DUsuariosAyer}</p>`
+    let MsgVentasAyer = `<p class="mb-0"><span class="text-success text-sm font-weight-bolder">${PVentasAyer} </span>${DVentasAyer}</p>`
+
+    let ListaElementos = document.getElementsByClassName("card-footer p-3")
+
+    let [Primero, Segundo, Tercero, Cuarto] = ListaElementos
+
+    Primero.innerHTML = MsgSemPasada
+    Segundo.innerHTML = MsgMesPasado
+    Tercero.innerHTML = MsgUsuariosAyer
+    Cuarto.innerHTML = MsgVentasAyer
+}
+
+let CambiosTextoGraficos = () => {
+    let data = [
+        {
+            titulo: "Vistas del sitio web",
+            descripcion: "Rendimiento de la última campaña"
+        },
+
+        {
+            titulo: "Ventas diarias",
+            descripcion: "(+15%) de aumento en las ventas de hoy"
+        },
+        {
+            titulo: "Tareas completadas",
+            descripcion: "Rendimiento de la última campaña"
+        }
+    ]
+
+    let
 
 }
 
@@ -98,3 +133,5 @@ runScripts();
 updateData();
 modifyText();
 cambiosIndicadores();
+
+CambiosTextoGraficos()
