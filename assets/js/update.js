@@ -105,29 +105,62 @@ let cambiosIndicadores = () => {
     Segundo.innerHTML = MsgMesPasado
     Tercero.innerHTML = MsgUsuariosAyer
     Cuarto.innerHTML = MsgVentasAyer
+
 }
 
 let CambiosTextoGraficos = () => {
     let data = [
         {
             titulo: "Vistas del sitio web",
-            descripcion: "Rendimiento de la última campaña"
+            descripcion: "Rendimiento de la última campaña",
+            schedule: "campaña enviada hace 2 días"
         },
 
         {
             titulo: "Ventas diarias",
-            descripcion: "(+15%) de aumento en las ventas de hoy"
+            descripcion: "(+15%) de aumento en las ventas de hoy",
+            schedule: "campaña enviada hace 2 días"
         },
         {
             titulo: "Tareas completadas",
-            descripcion: "Rendimiento de la última campaña"
+            descripcion: "Rendimiento de la última campaña",
+            schedule: "campaña enviada hace 2 días"
         }
     ]
 
-    let
+    let [Visitas, Ventas, Tareas] = data;
 
+    let { titulo: TituloVisitas, descripcion: descVisitas, schedule:schVisitas} = Visitas
+    let { titulo: TituloVentas, descripcion: descVentas, schedule:schVentas} = Ventas
+    let { titulo: TituloTareas, descripcion: descTareas, schedule:schTareas} = Tareas
+
+    let ListaElementos = document.getElementsByClassName("card-body");
+
+    let [cardVisitas, cardVentas, cardTareas] = ListaElementos;
+
+    console.log(ListaElementos);
+    console.log(cardVisitas)
+    console.log(cardVentas)
+    console.log(cardTareas)
+
+    cardVisitas.innerHTML = `<h6 class="mb-0 ">${TituloVisitas}</h6>
+                             <p class="text-sm ">${descVisitas}</p>
+                             <hr class="dark horizontal"><div class="d-flex ">
+                             <i class="material-icons text-sm my-auto me-1">schedule</i>
+                             <p class="mb-0 text-sm">${schVisitas} </p></div>`
+
+    cardVentas.innerHTML = `<h6 class="mb-0 ">${TituloVentas}</h6>
+                            <p class="text-sm ">${descVentas}</p>
+                            <hr class="dark horizontal"><div class="d-flex ">
+                            <i class="material-icons text-sm my-auto me-1">schedule</i>
+                            <p class="mb-0 text-sm"> ${schVentas} </p></div>`
+
+    cardTareas.innerHTML = `<h6 class="mb-0 ">${TituloTareas}</h6>
+                            <p class="text-sm ">${descTareas}</p>
+                            <hr class="dark horizontal"><div class="d-flex ">
+                            <i class="material-icons text-sm my-auto me-1">schedule</i>
+                            <p class="mb-0 text-sm"> ${schTareas} </p></div>`
 }
-
 
 runScripts();
 updateData();
