@@ -65,37 +65,51 @@ let updateData = () => {
 }
 
 let cambiosIndicadores = () => {
-
-    let data = [
+    let cambios = [
         {
-            porcentaje: "+55%",
-            descripcion: "que la semana pasada"
+          valor_previo: 250,
+          valor_actual: 301,
+          mensaje_tiempo: 'que la semana anterior'
         },
         {
-            porcentaje: "+3%",
-            descripcion: "que el mes pasado"
+          valor_previo: 3510,
+          valor_actual: 3200,
+          mensaje_tiempo: 'que la semana anterior'
         },
         {
-            porcentaje: "-2%",
-            descripcion: "que ayer"
+          valor_previo: 3920,
+          valor_actual: 4215,
+          mensaje_tiempo: 'que ayer'
         },
         {
-            porcentaje: "+5%",
-            descripcion: "que ayer"
-        },
-    ];
+          valor_previo: 110200,
+          valor_actual: 121520,
+          mensaje_tiempo: 'que ayer'
+        }
+      ]
 
-    let [SemPasada, MesPasado, UsuariosAyer, VentasAyer] = data;
+    let [SemPasada, MesPasado, UsuariosAyer, VentasAyer] = cambios;
+    let signo=""
 
-    let { porcentaje: PSemPasada, descripcion: DSempasada } = SemPasada;
-    let { porcentaje: PMesPasado, descripcion: DMesPasado } = MesPasado;
-    let { porcentaje: PUsuariosAyer, descripcion: DUsuariosAyer } = UsuariosAyer;
-    let { porcentaje: PVentasAyer, descripcion: DVentasAyer } = VentasAyer;
-
-    let MsgSemPasada = `<p class="mb-0"><span class="text-success text-sm font-weight-bolder">${PSemPasada} </span>${DSempasada}</p>`
-    let MsgMesPasado = `<p class="mb-0"><span class="text-success text-sm font-weight-bolder">${PMesPasado} </span>${DMesPasado}</p>`
-    let MsgUsuariosAyer = `<p class="mb-0"><span class="text-success text-sm font-weight-bolder">${PUsuariosAyer} </span>${DUsuariosAyer}</p>`
-    let MsgVentasAyer = `<p class="mb-0"><span class="text-success text-sm font-weight-bolder">${PVentasAyer} </span>${DVentasAyer}</p>`
+    if(SemPasada.valor_actual>SemPasada.valor_previo) signo="+" 
+    let MsgSemPasada = `<p class="mb-0"><span class="text-success text-sm font-weight-bolder">${signo}
+                        ${Math.round((SemPasada.valor_actual - SemPasada.valor_previo)*100/SemPasada.valor_previo) } </span>
+                        ${SemPasada.mensaje_tiempo}</p>`
+                        signo=""
+    if(MesPasado.valor_actual>MesPasado.valor_previo) signo="+" 
+    let MsgMesPasado = `<p class="mb-0"><span class="text-success text-sm font-weight-bolder">${signo}
+                        ${Math.round((MesPasado.valor_actual - MesPasado.valor_previo)*100/MesPasado.valor_previo) } </span>
+                        ${MesPasado.mensaje_tiempo}</p>`
+                        signo=""
+    if(UsuariosAyer.valor_actual>UsuariosAyer.valor_previo) signo="+" 
+    let MsgUsuariosAyer = `<p class="mb-0"><span class="text-success text-sm font-weight-bolder">${signo}
+                        ${Math.round((UsuariosAyer.valor_actual - UsuariosAyer.valor_previo)*100/UsuariosAyer.valor_previo) } </span>
+                        ${UsuariosAyer.mensaje_tiempo}</p>`
+                        signo=""
+    if(VentasAyer.valor_actual>VentasAyer.valor_previo) signo="+" 
+    let MsgVentasAyer = `<p class="mb-0"><span class="text-success text-sm font-weight-bolder">${signo}
+                        ${Math.round((VentasAyer.valor_actual - VentasAyer.valor_previo)*100/VentasAyer.valor_previo) } </span>
+                        ${VentasAyer.mensaje_tiempo}</p>`
 
     let ListaElementos = document.getElementsByClassName("card-footer p-3")
 
@@ -105,7 +119,6 @@ let cambiosIndicadores = () => {
     Segundo.innerHTML = MsgMesPasado
     Tercero.innerHTML = MsgUsuariosAyer
     Cuarto.innerHTML = MsgVentasAyer
-
 }
 
 let CambiosTextoGraficos = () => {
